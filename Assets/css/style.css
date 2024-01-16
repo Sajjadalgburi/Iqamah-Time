@@ -18,7 +18,7 @@ body {
 th,
 .main-date-header,
 .current-Time,
-.user-Location {
+.top-Header {
   font-size: 2rem;
 }
 
@@ -35,12 +35,12 @@ td {
 }
 
 .main-date-header,
-.user-Location,
+.top-Header,
 .current-Time {
   text-align: center;
 }
 
-.user-Location,
+.top-Header,
 .current-Time {
   color: #fff;
 }
