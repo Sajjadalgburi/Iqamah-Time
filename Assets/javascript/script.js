@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   const ApiKey = "b41fb0ef272b35"; // Replace with your actual API key
+  const TimeDisplayEl = document.querySelector(".current-Time");
 
   // Function to get user's location based on IP address
   async function getUserLocation() {
@@ -35,6 +36,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
       console.error("Unable to determine user location.");
     }
   }
+
+  // Function to display current time
+  function displayTime() {
+    const rightNow = dayjs().format("hh:mm:ss A");
+    TimeDisplayEl.innerHTML = rightNow;
+  }
+
+  // Update time every second
+  setInterval(displayTime, 1000);
 
   // Call the function to fetch prayer timings
   fetchPrayerTimings();
