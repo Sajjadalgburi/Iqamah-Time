@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   const ApiKey = "b41fb0ef272b35"; // Replace with your actual API key
   const TimeDisplayEl = document.querySelector(".current-Time");
+  const userLocationElement = document.querySelector(".user-Location");
+  const HijraDate = document.querySelector(".Hijra-Date");
 
   // Function to get user's location based on IP address
-  async function getUserLocation() {
+  async function getUserLocation(data) {
     try {
       const response = await fetch(`https://ipinfo.io/json?token=${ApiKey}`);
       const data = await response.json();
@@ -16,6 +18,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
       return null;
     }
   }
+
+  // function to get user's location and print it to screen
+  const updateUserLocation = async () => {
+    const userLocationData = await getUserLocation();
+
+    if (userLocationData) {
+      // checking if userLocationData exists, then proceed
+
+      if (userLocationElement) {
+        // checking if userLocationElement exists
+
+        // updating the DOM with the newly acquired location
+        userLocationElement.innerHTML =
+          userLocationData.city + ", " + userLocationData.country;
+      } else {
+        console.error("Element with id 'userLocation' not found");
+      }
+    }
+  };
 
   // Function to fetch prayer timings using the user's location
   async function fetchPrayerTimings() {
@@ -46,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // Update time every second
   setInterval(displayTime, 1000);
 
-  // Call the function to fetch prayer timings
+  // calling functions
   fetchPrayerTimings();
+  updateUserLocation();
 });
