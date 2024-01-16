@@ -9,10 +9,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.user-Location {
-  color: #fff;
-}
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -20,8 +16,10 @@ body {
 }
 
 th,
-.main-date-header {
-  font-size: 1.8rem;
+.main-date-header,
+.current-Time,
+.user-Location {
+  font-size: 2rem;
 }
 
 td {
@@ -38,6 +36,11 @@ td {
 
 .main-date-header,
 .user-Location,
-.current-time {
+.current-Time {
   text-align: center;
+}
+
+.user-Location,
+.current-Time {
+  color: #fff;
 }
