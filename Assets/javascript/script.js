@@ -20,7 +20,7 @@ async function fetchPrayerTimings() {
   const userLocation = await getUserLocation();
 
   if (userLocation) {
-    const apiUrl = `http://api.aladhan.com/v1/timingsByCity?city=${userLocation.city}&country=${userLocation.country}&method=2`;
+    const apiUrl = `http://api.aladhan.com/v1/timingsByCity?city=${userLocation.city}&country=${userLocation.country}`;
 
     console.log(apiUrl);
 
