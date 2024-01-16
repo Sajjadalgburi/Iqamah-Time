@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 :root {
-  --bgColor: #434c54;
+  --bgColor: #564a4e;
 }
 
 body {
@@ -15,14 +15,21 @@ body {
   table-layout: fixed;
 }
 
+.main-date-header {
+  background: #eeebec;
+}
+
 th,
-.main-date-header,
 .current-Time,
-.top-Header {
-  font-size: 2rem;
+.user-Location,
+.hijra-Date,
+.Todays-Date {
+  font-weight: bold;
+  font-size: 2.23rem;
 }
 
 td {
+  font-weight: 600;
   font-size: 1.15rem;
 }
 
