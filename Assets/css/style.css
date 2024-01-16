@@ -8,3 +8,17 @@ body {
   background-color: var(--bgColor);
   font-family: "Roboto", sans-serif;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  /* remove border if needed */
+  border: 1px solid #ddd;
+}
