@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const ApiKey = "b41fb0ef272b35"; // Replace with your actual API key
   const TimeDisplayEl = document.querySelector(".current-Time");
   const userLocationElement = document.querySelector(".user-Location");
-  const HijraDate = document.querySelector(".Hijra-Date");
+  const HijraDate = document.querySelector(".hijra-Date");
 
   // Function to get user's location based on IP address
   async function getUserLocation(data) {
@@ -38,6 +38,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   };
 
+  // function to print the Hijra date
+  const updateHijraDate = async () => {
+    try {
+      const HijraDateData = await fetchPrayerTimings();
+
+      if (HijraDateData && HijraDateData.data) {
+        // Updating the DOM with the newly acquired Hijra date
+        HijraDate.innerHTML =
+          HijraDateData.data.date.hijri.month.number +
+          " " +
+          HijraDateData.data.date.hijri.month.en +
+          ", " +
+          HijraDateData.data.date.hijri.year;
+      }
+    } catch (error) {
+      console.error("Error updating Hijra date:", error);
+    }
+  };
+
   // Function to fetch prayer timings using the user's location
   async function fetchPrayerTimings() {
     const userLocation = await getUserLocation();
@@ -47,17 +66,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       console.log(apiUrl);
 
-      // Make fetch request
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
+      try {
+        // Make fetch request using async/await
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        console.log(data);
+
+        return data; // Return the fetched data
+      } catch (error) {
+        console.error("Error fetching prayer timings:", error);
+        return null;
+      }
     } else {
       console.error("Unable to determine user location.");
+      return null;
     }
   }
-
   // Function to display current time
   function displayTime() {
     const rightNow = dayjs().format("hh:mm:ss A");
@@ -70,4 +95,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // calling functions
   fetchPrayerTimings();
   updateUserLocation();
+  updateHijraDate();
 });
