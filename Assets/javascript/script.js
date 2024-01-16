@@ -74,6 +74,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   };
 
+  //function to update the prayer times
+  const updatePrayerTimes = async () => {
+    const fajr = document.getElementById("fajr-Time");
+    const sunrise = document.getElementById("sunrise-Time");
+    const dhuhr = document.getElementById("duhr-Time");
+    const asr = document.getElementById("asr-Time");
+    const maghrib = document.getElementById("maghrib-Time");
+    const isha = document.getElementById("isha-Time");
+
+    try {
+      const prayerTimes = await fetchPrayerTimings();
+      fajr.innerHTML = prayerTimes.data.timings.Asr;
+      sunrise.innerHTML = prayerTimes.data.timings.Sunrise;
+      dhuhr.innerHTML = prayerTimes.data.timings.Dhuhr;
+      asr.innerHTML = prayerTimes.data.timings.Asr;
+      maghrib.innerHTML = prayerTimes.data.timings.Maghrib;
+      isha.innerHTML = prayerTimes.data.timings.Isha;
+    } catch (error) {
+      console.error("Error catching prayer times:", error);
+    }
+  };
+
   // Function to fetch prayer timings using the user's location
   async function fetchPrayerTimings() {
     const userLocation = await getUserLocation();
@@ -88,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const response = await fetch(apiUrl);
         const data = await response.json();
 
-        console.log(data);
+        console.log(data.data.timings);
 
         return data; // Return the fetched data
       } catch (error) {
@@ -115,4 +137,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
   updateUserLocation();
   updateHijraDate();
   updateTodaysDate();
+  updatePrayerTimes();
 });
