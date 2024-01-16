@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const TimeDisplayEl = document.querySelector(".current-Time");
   const userLocationElement = document.querySelector(".user-Location");
   const HijraDate = document.querySelector(".hijra-Date");
+  const TodaysDate = document.querySelector(".Todays-Date");
 
   // Function to get user's location based on IP address
   async function getUserLocation(data) {
@@ -57,6 +58,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   };
 
+  // function to print todays date on top of website
+  const updateTodaysDate = async () => {
+    try {
+      const TodaysDateReadable = await fetchPrayerTimings();
+
+      if (TodaysDateReadable && TodaysDateReadable.data) {
+        TodaysDate.innerHTML = TodaysDateReadable.data.date.readable.replace(
+          "Jan",
+          "Jan, "
+        );
+      }
+    } catch (error) {
+      console.error("Error updating Todays date:", error);
+    }
+  };
+
   // Function to fetch prayer timings using the user's location
   async function fetchPrayerTimings() {
     const userLocation = await getUserLocation();
@@ -83,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       return null;
     }
   }
+
   // Function to display current time
   function displayTime() {
     const rightNow = dayjs().format("hh:mm:ss A");
@@ -96,4 +114,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
   fetchPrayerTimings();
   updateUserLocation();
   updateHijraDate();
+  updateTodaysDate();
 });
