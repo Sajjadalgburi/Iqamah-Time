@@ -43,7 +43,16 @@ td {
 }
 
 .friday-Prayers {
+  padding: 10px 0;
+  position: relative;
+  top: -16px;
   text-align: center;
+  font-weight: 800;
+}
+
+.friday-Prayers h3 {
+  margin-bottom: 10px;
+  font-size: 2rem;
 }
 
 .top-Header,
