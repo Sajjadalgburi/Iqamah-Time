@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const TodaysDate = document.querySelector(".Todays-Date");
 
   // Function to get user's location based on IP address
-  async function getUserLocation(data) {
+  async function getUserLocation() {
     try {
       const response = await fetch(`https://ipinfo.io/json?token=${ApiKey}`);
       const data = await response.json();
