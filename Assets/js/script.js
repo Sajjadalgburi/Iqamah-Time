@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const userLocation = await getUserLocation();
 
     if (userLocation) {
-      const apiUrl = `http://api.aladhan.com/v1/timingsByCity?city=${userLocation.city}&country=${userLocation.country}`;
+      const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${userLocation.city}&country=${userLocation.country}`;
 
       console.log(apiUrl);
 
