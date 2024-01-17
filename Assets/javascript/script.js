@@ -74,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   };
 
+  // AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+  // IIFE SEARCH IT UP AND ADD IT INSTEAD OF CALLING SO MUCH FUNCTIONS
+
+  // awddddddddddddd
+
   //function to update the prayer times
   const updatePrayerTimes = async () => {
     const fajr = document.getElementById("fajr-Time");
