@@ -15,12 +15,7 @@ body {
   table-layout: fixed;
 }
 
-.main-date-header {
-  background: #eeebec;
-}
-
 th,
-.current-Time,
 .user-Location,
 .hijra-Date,
 .Todays-Date {
@@ -47,7 +42,21 @@ td {
   text-align: center;
 }
 
+.friday-Prayers {
+  text-align: center;
+}
+
 .top-Header,
 .current-Time {
   color: #fff;
+}
+
+.main-date-header,
+.friday-Prayers {
+  background: #eeebec;
+}
+
+.current-Time {
+  font-weight: bold;
+  font-size: 2rem;
 }
