@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 :root {
-  --bgColor: #564a4e;
+  --bgColor: rgb(33, 37, 41);
 }
 
 body {
   background-color: var(--bgColor);
   font-family: "Roboto", sans-serif;
+  color: #fff;
 }
 
 .table {
@@ -56,15 +57,9 @@ td {
   font-size: 2rem;
 }
 
-.top-Header,
-.current-Time,
-#currenTime {
-  color: #fff;
-}
-
 .main-date-header,
 .friday-Prayers {
-  background: #eeebec;
+  background: rgb(44, 48, 52);
 }
 
 .current-Time {
